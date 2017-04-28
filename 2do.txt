@@ -1,0 +1,79 @@
+global:
+- pre-commit hooks (husky)
+
+client:
+- decide how to handle side effects (redux-observable, -saga, -logic)
+- rewrite redux-fx to connected components which dispatch ADD DELETE, etc.
+- add reselect to bundle
+- unCSS
+
+server:
+- add server side store
+- CORS should be a configuration option
+
+dev:
+- optimize logging
+
+webpack:
+- code splitting (require.ensure)
+    http://moduscreate.com/code-splitting-for-react-router-with-es6-imports/
+    http://stackoverflow.com/questions/35514785/webpack-2-code-splitting-top-level-dependencies
+    https://webpack.js.org/guides/code-splitting-libraries/
+    https://webpack.js.org/guides/code-splitting-require/#require-ensure-
+- prettier
+
+------------
+act:
+
+Actions resulting from async operations should not make any assumptions about the current state,
+but rather derive from it when emitting new actions.
+That means they should not only receive the current state, but additionally a list of all actions that occurred,
+while they where waiting for an external result.
+Async event creation should be handled like user interaction, thus only actions are possible that are possible with the current state.
+
+React e.g. provides a view layer to the user, which only allows certain user actions to be generated.
+So what we need is a layer that defines all available external actions depending on the current state.
+
+React:  state » view » available actions
+Act:    state » api? » available actions
+
+Questions:
+Implementation of such a layer?
+Are actions
+- cancelable
+- chainable
+- dependable
+- ...?
+Is composition still possible?
+Boilerplate?
+Readable?
+Imperative?
+
+
+Alternative:
+Reducers could be changed to the following signature:
+(state, action, history) » state
+Where history is an array of actions that happened since the start of the async action.
+
+A middleware then would pickup the instant action, perform the async action then call the reducer and provide it with the history
+state » async action » get_history » reducer (with signature above)
+
+Alternative:
+- Add a data structure containing all currently accepted action types
+- perhaps it's necessary to derive the acceptable actions by composing reducers?
+
+Example:
+- user clicks load button
+- dispatch action 'xy/load_button_clicked'
+this will trigger act middleware which executes the async action and...
+remove action 'xy/load_button_clicked' from the accepted actions (automatically by updating the view, or implicitly by mutating act store)
+add cancel_button_clicked to accepted actions (again view our act)
+add load_finished to accepted actions (act)
+
+cancel:
+Simply removed load_finished from accepted actions
+
+Interdependent actions:
+Listen for load_finished, work with transient state
+
+Mutating act might simply be a second reducer on a second store, or even in the same reducer on the main store.

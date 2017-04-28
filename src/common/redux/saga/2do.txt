@@ -1,0 +1,9 @@
+- how to react to cancelled tasks?
+
+e.g.
+User clicks 'Load' button
+emit bgLoadStart action
+bgLoad saga starts
+Use clicks 'cancel load' button
+cancel bgLoad saga
+emit bgLoadCancelled action

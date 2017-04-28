@@ -1,0 +1,27 @@
+{
+  "source": "./src",
+  "includes": ["\\.(js|jsx)$"],
+  "destination": "./apidoc",
+  "manual": {
+    "Readme": ["./README.md"]
+  },
+  "package": "./package.json",
+  "coverage": true,
+  "includeSource": true,
+  "plugins": [],
+  "test": {
+    "type": "jest",
+    "source": "./src",
+    "includes": ["__test__/*\\.(spec|test)\\.js$"]
+  },
+  "lint": true,
+  "experimentalProposal": {
+    "classProperties": true,
+    "objectRestSpread": true,
+    "decorators": true,
+    "functionBind": true,
+    "asyncGenerators": true,
+    "exportExtensions": true,
+    "dynamicImport": true
+  }
+}

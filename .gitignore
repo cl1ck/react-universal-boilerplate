@@ -1,0 +1,11 @@
+.babel-cache/
+.c9/
+.nyc_output/
+coverage/
+dist/
+temp/
+.tmp/
+node_modules/
+apidoc/
+yarn-error.log
+npm-debug.log*

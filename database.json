@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "port": 28015,
+  "db": "rrr",
+  "discovery": true,
+  "timeout": 60
+}
