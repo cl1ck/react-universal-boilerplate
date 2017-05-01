@@ -4,7 +4,7 @@ export default {
   developmentLogLevel: 'debug',
   serverRequests: process.env.NODE_ENV === 'development',
   serverResponses: false,
-  devRequests: process.env.NODE_ENV === 'development',
+  devRequests: false,
   devResponses: false,
   filterRequests: [
     /.*\.hot-update\.js.*/,
