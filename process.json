@@ -1,0 +1,24 @@
+{
+  "name"             : "react-universal-boilerplate",
+  "cwd"              : "./dist",
+  "args"             : "",
+  "script"           : "server.js",
+  "node_args"        : ["--harmony", "--stack-size=102400000"],
+  "log_date_format"  : "YYYY-MM-DD HH:mm Z",
+  "error_file"       : "./logs/stderr.log",
+  "out_file"         : "./logs/stdout.log",
+  "pid_file"         : "/var/run/react-universal-boilerplate.pid",
+  "min_uptime"       : "200s",
+  "max_restarts"     : 15,
+  "max_memory_restart": "1000M",
+  "cron_restart"     : "* 1 * * *",
+  "watch"            : false,
+  "merge_logs"       : true,
+  "exec_interpreter" : "node",
+  "exec_mode"        : "fork",
+  "autorestart"      : true,
+  "vizion"           : false,
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
