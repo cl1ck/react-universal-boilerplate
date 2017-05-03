@@ -14,5 +14,6 @@ export default {
   server: path.join(src, 'server'),
   common: path.join(src, 'common'),
   config: path.join(src, 'config'),
-  assets: path.join(src, 'assets')
+  assets: path.join(src, 'assets'),
+  translations: path.join(src, 'translations')
 }

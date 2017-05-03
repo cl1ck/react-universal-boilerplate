@@ -20,6 +20,7 @@ export const test = createLogger('test', chalk.dim.yellow)
 // blue
 export const browsersync = createLogger('browsersync', chalk.blue)
 export const rethinkdb = createLogger('rethinkdb', chalk.bold.blue)
+export const script = createLogger('script', chalk.dim.blue)
 
 // magenta
 export const hmr = createLogger('hmr', chalk.magenta)

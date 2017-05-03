@@ -15,6 +15,7 @@ const startServer = async () => {
     devConfig.port,
     log
   )
+
   log.debug('Waiting for initial build...')
   await initialBuildDone
   attachHotServer(compiler, {

@@ -7,7 +7,6 @@ import DevTools from 'client/components/DevTools'
 import getSocketConnection from 'client/socket/getSocketConnection'
 import * as reducers from 'client/modules'
 import socketMiddleware from 'common/redux/socket/middleware'
-import sagaMiddleware from 'common/redux/saga'
 import {
   middleware as fxMiddleware,
   reducers as fxReducers
@@ -15,7 +14,7 @@ import {
 
 export default function configureStore (preloadedState, history) {
   const enhancers = []
-  const middlewares = [fxMiddleware, sagaMiddleware]
+  const middlewares = [fxMiddleware]
 
   // socket connection
   if (__BROWSER__) {

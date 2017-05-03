@@ -5,6 +5,7 @@ import path from 'path'
 
 const mocha = 'node_modules/mocha/bin/mocha ' +
   path.join(paths.temp, 'acceptance-test.js')
+const NO_FAIL = process.env.NO_FAIL === 'true'
 
 export default {
   ...base,
@@ -20,7 +21,7 @@ export default {
     ...base.plugins,
     new WebpackShellPlugin({
       onBuildExit: mocha,
-      swallowError: true
+      swallowError: NO_FAIL
     })
   ]
 }

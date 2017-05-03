@@ -58,7 +58,9 @@ app.use(favicon)
 
 // Static
 if (!__DEV__) {
-  app.use(convert(mount('/', serve(`${__dirname}/static`))))
+  app.use(convert(
+    mount('/', serve(`${__dirname}/static`))
+  ))
 }
 
 // user defined middlewares

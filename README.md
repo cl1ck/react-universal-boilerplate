@@ -12,7 +12,6 @@
 [x] [Babel](https://babeljs.io/) for transpiling ES2016 and some proposed ESNext features
 [x] [PM2](http://pm2.keymetrics.io/) for daemonizing in production
 [x] [Typescript](http://www.typescriptlang.org)
-[ ] Replace Nodemon with PM2 (for launching the dev server)
 [ ] no longer use npm directly (blocked by run scripts not being fully supported by Yarn yet)
 
 ### Client side
@@ -31,9 +30,7 @@
 [x] [Koa@2](https://github.com/koajs/koa/tree/v2.x)
 [x] [KoaRouter](https://github.com/alexmingoia/koa-router) for server side routing
 [x] [RethinkDB](https://www.rethinkdb.com/) as realtime backend
-[ ] Replace RethinkDB with
 [x] React server-side renderer
-[ ] [deepstream.io](deepstream.io) as realtime backend?
 
 ### Connectivity
 [x] [Socket.io](http://socket.io/) for client/server connectivity
@@ -42,29 +39,26 @@
 [ ] Docker dev environment
 [x] [custom Webpack development server with hot reloading](https://github.com/cl1ck/webpack-hot-socket-server)
 [x] [Depcheck](https://github.com/depcheck/depcheck) for dependency checking
-[ ] npm-check-updates
+[x] npm-check-updates
 [ ] Webpack DLL plugin
 
 ### Testing
+[x] [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/), [Sinon](http://sinonjs.org/) for unit testing
 [x] [Enzyme](http://airbnb.io/enzyme/) for component testing
-[ ] Mocha
-[ ] Chai
-[ ] Sinon
-[ ] WebdriverIO
-[ ] Cucumber
-[ ] Istanbul
+[x] [Nightmare JS](http://www.nightmarejs.org/) for acceptance testing
+[x] [Istanbul](https://istanbul.js.org/) for coverage reporting
 
 ### Code quality
 [x] [ESLint](http://eslint.org/) for javascript linting
-[ ] Stylelint
-[ ] Husky
+[x] [Stylelint](https://stylelint.io/) for PostCSS linting
+[x] [Husky](https://github.com/typicode/husky) for ensuring quality git commits & pushs
 [ ] semver
 
 ## Setup
 ```
 npm i -g yarn
 NODE_ENV=development yarn install
-yarn global add rethink-migrate pm2 nodemon node-inspector
+yarn global add rethink-migrate pm2 node-inspector
 ```
 
 ## Production
@@ -125,6 +119,8 @@ Try to run `DEBUG=nightmare npm run test:acceptance` or `node_modules/electron/d
 #### Acceptance testing on CI server:
 To run electron on a headless CI server, Xvfb is required.
 e.g. for [https://wiki.jenkins-ci.org/display/JENKINS/Xvfb+Plugin](Jenkins)
+
+Make sure you export the `DISPLAY` to use.
 
 ## ESDoc
 To generate documentation run

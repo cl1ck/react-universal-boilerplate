@@ -21,6 +21,9 @@ if (logConfig.devRequests) {
 app
   .use(devMiddleware(compiler, webpackDevConfig, validateBundle))
   // .use(prepareProxy(false))
-  .use(convert(proxy({host})))
+  .use(convert(proxy({
+    host,
+    jar: true
+  })))
 
 export default app

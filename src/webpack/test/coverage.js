@@ -6,6 +6,7 @@ import path from 'path'
 
 const mocha = 'node_modules/mocha/bin/mocha ' +
   path.join(paths.temp, 'coverage-test.js')
+const NO_FAIL = process.env.NO_FAIL === 'true'
 
 export default {
   ...base,
@@ -27,7 +28,8 @@ export default {
   plugins: [
     ...base.plugins,
     new WebpackShellPlugin({
-      onBuildExit: mocha
+      onBuildExit: mocha,
+      swallowError: NO_FAIL
     })
   ]
 }
