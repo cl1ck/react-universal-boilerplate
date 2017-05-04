@@ -19,7 +19,9 @@
 [x] [React Router](https://github.com/ReactTraining/react-router) for universal routing
 [x] [Redux](http://redux.js.org/) for managing application state
 [x] [immutable](https://facebook.github.io/immutable-js/)
-[ ] [ReactIntl](https://github.com/yahoo/react-intl) for i18n?
+
+### i18n
+[x] [ReactIntl](https://github.com/yahoo/react-intl) for i18n
 
 ### Styling
 [x] [PostCSS](http://postcss.org/) for advanced CSS features
@@ -77,12 +79,13 @@ And to stop the daemonized server
 pm2 stop rrr
 ```
 
-## Development Workflow
+## Development workflow
 
 Run the development toolset:
 ```
-npm run dev
+yarn run dev
 ```
+
 ### The services are running at these ports by default
 BrowserSync:              3030
 Browsersync UI:           3031
@@ -98,23 +101,23 @@ Install [React Developer Tools](https://chrome.google.com/webstore/detail/react-
 
 ## Dependency checking
 To check your dependencies run
-`npm run depcheck`
+`yarn run depcheck`
 
 ## Testing
 
 ### Unit and integration testing
 This project uses mocha, chai, sinon, jsdom and enzyme for unit / integration testing.
 Single test run:
-`npm run test:unit`
+`yarn run test:unit`
 
 Watch mode:
-`npm run test:unit:watch`
+`yarn run test:unit:watch`
 
 ### Acceptance testing:
 For acceptance testing
 
 If you get a timeout while running acceptance tests, it might be an issue with electron.
-Try to run `DEBUG=nightmare npm run test:acceptance` or `node_modules/electron/dist/electron` for further analysis.
+Try to run `DEBUG=nightmare yarn run test:acceptance` or `node_modules/electron/dist/electron` for further analysis.
 
 #### Acceptance testing on CI server:
 To run electron on a headless CI server, Xvfb is required.
@@ -124,4 +127,10 @@ Make sure you export the `DISPLAY` to use.
 
 ## ESDoc
 To generate documentation run
-`npm run esdoc`
+`yarn run esdoc`
+
+## i18n
+Configure your languages in `src/client/i18n`
+Extract messages from your react components: `yarn run translate`
+This will generate JSON files in `src/translations` for each language.
+After translating all messages, don't forget to rebuild the bundle.

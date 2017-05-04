@@ -1,6 +1,7 @@
 .babel-cache/
 .c9/
 .nyc_output/
+.cache/
 coverage/
 dist/
 temp/
@@ -9,3 +10,4 @@ node_modules/
 apidoc/
 yarn-error.log
 npm-debug.log*
+rethinkdb_data/

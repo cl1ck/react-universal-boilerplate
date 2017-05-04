@@ -7,12 +7,21 @@ import {AppContainer} from 'react-hot-loader'
 import configureStore from 'client/store'
 import {ConnectedRouter} from 'connected-react-router/immutable'
 import transit from 'transit-immutable-js'
-import polyfill from 'client/utils/polyfill'
-import { IntlProvider } from 'react-intl'
-import getMessages from 'common/i18n/messages'
-import getClientLanguage from 'common/i18n/clientLanguage'
+import polyfill from 'client/polyfills'
+import { IntlProvider, addLocaleData } from 'react-intl'
 import App from './App'
+import { localeData, DEFAULT_LOCALE } from 'client/i18n'
+import translations from 'translations'
 
+let ActiveApp = App
+let activeTranslations = translations
+let language
+let messages
+
+if (!__DEV__) {
+  const OfflinePluginRuntime = require('offline-plugin/runtime')
+  OfflinePluginRuntime.install()
+}
 polyfill()
 
 let preloadedState
@@ -26,54 +35,61 @@ if (__BROWSER__ && window.__PRELOADED_STATE__) {
 
 const history = createBrowserHistory()
 const store = configureStore(preloadedState, history)
+
+function getMessages (language, translations) {
+  const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0]
+  return translations[languageWithoutRegionCode] ||
+    translations[language] ||
+    translations[DEFAULT_LOCALE]
+}
+
+// i18n
+addLocaleData(localeData)
+language = (navigator.languages && navigator.languages[0]) ||
+  navigator.language ||
+  navigator.userLanguage
+messages = getMessages(language, activeTranslations)
+// todo: add a way to change messages on the fly
+
 const $root = document.getElementById('root')
-const language = getClientLanguage()
-const messages = getMessages(language)
+const renderToRoot = () => {
+  const provider = (
+    <Provider store={store}>
+      <IntlProvider locale={language} messages={messages}>
+        <ConnectedRouter history={history}>
+          <ActiveApp />
+        </ConnectedRouter>
+      </IntlProvider>
+    </Provider>
+  )
+  if (__DEV__) {
+    render(
+      <AppContainer>
+        {provider}
+      </AppContainer>,
+      $root
+    )
+  } else {
+    render(provider, $root)
+  }
+}
 
 if (!__TEST__) {
   if (__DEV__) {
     window.React = React
     window.store = store
-    render(
-      <AppContainer>
-        <Provider store={store}>
-          <IntlProvider locale={language} messages={messages}>
-            <ConnectedRouter history={history}>
-              <App />
-            </ConnectedRouter>
-          </IntlProvider>
-        </Provider>
-      </AppContainer>,
-      $root
-    )
-  } else {
-    render(
-      <Provider store={store}>
-        <IntlProvider locale={language} messages={messages}>
-          <ConnectedRouter history={history}>
-            <App />
-          </ConnectedRouter>
-        </IntlProvider>
-      </Provider>,
-      $root
-    )
   }
+  renderToRoot()
 
   if (module.hot) {
+    module.hot.accept('translations', () => {
+      activeTranslations = require('translations').default // eslint-disable-line global-require
+      messages = getMessages(language, activeTranslations)
+      renderToRoot()
+    })
     module.hot.accept('./App', () => {
-      const NextApp = require('./App').default // eslint-disable-line global-require
-      render(
-        <AppContainer>
-          <Provider store={store}>
-            <IntlProvider locale={language} messages={messages}>
-              <ConnectedRouter history={history}>
-                <NextApp />
-              </ConnectedRouter>
-            </IntlProvider>
-          </Provider>
-        </AppContainer>,
-        $root
-      )
+      ActiveApp = require('./App')
+      renderToRoot()
     })
   }
 }

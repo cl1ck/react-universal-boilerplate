@@ -4,7 +4,7 @@ import paths from 'config/paths'
 import { transform } from 'babel-core'
 import glob from 'glob-promise'
 import babelrc from 'common/babel/babelrc'
-import { locales, DEFAULT_LOCALE } from 'config/i18n'
+import { locales, DEFAULT_LOCALE } from 'client/i18n'
 import ProgressBar from 'progress'
 
 const SOURCE_FILES = `${paths.src}/**/!(*.spec).{js,jsx}`

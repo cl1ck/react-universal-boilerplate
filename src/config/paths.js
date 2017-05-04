@@ -7,7 +7,7 @@ export default {
   root,
   src,
   dev: path.join(root, 'dev'),
-  babelCache: path.join(root, '.babel-cache'),
+  cache: path.join(root, '.cache'),
   dist: path.join(root, 'dist'),
   temp: path.join(root, 'temp'),
   client: path.join(src, 'client'),

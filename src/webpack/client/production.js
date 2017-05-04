@@ -7,6 +7,7 @@ import devCss from 'webpack/rules/css/client'
 import devScss from 'webpack/rules/scss/client'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import favicon from 'webpack/plugins/favicon'
+import offline from 'webpack/plugins/offline'
 import base from './base'
 
 const css = devCss.use.slice(1)
@@ -29,7 +30,8 @@ export default {
     banner,
     extractCSS,
     ...chunks,
-    ...minimize
+    ...minimize,
+    offline
   ],
   module: {
     rules: [

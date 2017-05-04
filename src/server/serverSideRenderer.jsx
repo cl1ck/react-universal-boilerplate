@@ -12,9 +12,11 @@ import paths from 'config/paths'
 import path from 'path'
 import serialize from 'serialize-javascript'
 import transit from 'transit-immutable-js'
-import getMessages from 'common/i18n/messages'
-import { locales, DEFAULT_LOCALE } from 'config/i18n'
+import { locales, DEFAULT_LOCALE } from 'client/i18n'
 import { IntlProvider } from 'react-intl'
+import translations from 'translations'
+
+let activeTranslations = translations
 
 async function getIndex (rootComponent, store) {
   const dir = __DEV__ ? paths.dist : __dirname
@@ -39,7 +41,7 @@ const serverSideRenderer = async ctx => {
   const initialState = immutable.fromJS({})
   const store = configureStore(initialState)
   const language = ctx.acceptsLanguages(locales) || DEFAULT_LOCALE
-  const messages = getMessages(language)
+  const messages = activeTranslations[language]
 
   const rootComponent = renderToString(
     <Provider store={store} key='provider'>

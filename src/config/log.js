@@ -2,7 +2,7 @@ export default {
   dateTimeFormat: 'hh:mm:ss',
   productionLogLevel: 'warn',
   developmentLogLevel: 'debug',
-  serverRequests: process.env.NODE_ENV === 'development',
+  serverRequests: false,
   serverResponses: false,
   devRequests: false,
   devResponses: false,
