@@ -3,7 +3,7 @@ import deData from 'react-intl/locale-data/de'
 import frData from 'react-intl/locale-data/fr'
 import itData from 'react-intl/locale-data/it'
 
-if (!window.Intl) {
+if (__BROWSER__ && !window.Intl) {
   import('intl')
   import('intl/locale-data/jsonp/en.js')
   import('intl/locale-data/jsonp/de.js')

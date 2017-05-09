@@ -6,6 +6,7 @@ import sinon from 'sinon'
 import nightmare from 'nightmare'
 import visit from 'test/utils/visit'
 import sourcemap from 'source-map-support'
+import chaiJestSnapshot from 'chai-jest-snapshot'
 
 sourcemap.install()
 
@@ -31,6 +32,7 @@ global.navigator = {
 // chai
 global.assert = chai.assert
 global.expect = chai.expect
+chai.use(chaiJestSnapshot)
 
 // enzyme
 global.mount = mount
@@ -43,3 +45,7 @@ global.sinon = sinon
 // nightmare
 global.nightmare = nightmare
 global.visit = visit
+
+beforeEach(function() {
+  chaiJestSnapshot.configureUsingMochaContext(this);
+})

@@ -1,3 +1,5 @@
+import 'core-js/es6/promise'
+
 export default function polyfill () {
   const promises = []
 

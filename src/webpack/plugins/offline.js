@@ -1,23 +1,17 @@
 import OfflinePlugin from 'offline-plugin'
+import serverConfig from 'config/server'
 
 export default new OfflinePlugin({
-  relativePaths: false,
-  publicPath: '/',
-  excludes: ['.htaccess'],
-  caches: {
-    main: [
-      'app.*.js',
-      'vendor.*.js',
-      'manifest.*.js'
-    ],
-    additional: [
-      '*.woff',
-      '*.woff2',
-    ],
-    optional: [
-      ':rest:'
-    ]
+  publicPath: serverConfig.publicPath,
+  AppCache: {
+    FALLBACK: { '/': '/' }
   },
-  safeToUseOptionalCaches: true,
-  AppCache: false
+  ServiceWorker: {
+    events: true,
+    navigateFallbackURL: serverConfig.publicPath
+  },
+  externals: [
+    serverConfig.publicPath
+  ],
+  autoUpdate: 1000 * 60 * 60 * 24 // 24 hours
 })

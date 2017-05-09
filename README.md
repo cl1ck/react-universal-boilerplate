@@ -7,12 +7,11 @@
 ## Features
 
 ### Environment
-[X] [Yarn](https://yarnpkg.com/) as package manager
+[X] [pnpm](https://pnpm.js.org/) as package manager
 [x] [Webpack 2](https://webpack.github.io/) as module bundler for client & server
 [x] [Babel](https://babeljs.io/) for transpiling ES2016 and some proposed ESNext features
 [x] [PM2](http://pm2.keymetrics.io/) for daemonizing in production
 [x] [Typescript](http://www.typescriptlang.org)
-[ ] no longer use npm directly (blocked by run scripts not being fully supported by Yarn yet)
 
 ### Client side
 [x] [React](https://facebook.github.io/react/)
@@ -46,21 +45,21 @@
 
 ### Testing
 [x] [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/), [Sinon](http://sinonjs.org/) for unit testing
-[x] [Enzyme](http://airbnb.io/enzyme/) for component testing
+[x] [Enzyme](http://airbnb.io/enzyme/) and [Chai Jest Snapshot](https://github.com/suchipi/chai-jest-snapshot) for snapshot testing react components
 [x] [Nightmare JS](http://www.nightmarejs.org/) for acceptance testing
 [x] [Istanbul](https://istanbul.js.org/) for coverage reporting
 
 ### Code quality
 [x] [ESLint](http://eslint.org/) for javascript linting
 [x] [Stylelint](https://stylelint.io/) for PostCSS linting
-[x] [Husky](https://github.com/typicode/husky) for ensuring quality git commits & pushs
+[x] [Husky](https://github.com/typicode/husky) for enforcing code quality on commit
 [ ] semver
 
 ## Setup
 ```
-npm i -g yarn
-NODE_ENV=development yarn install
-yarn global add rethink-migrate pm2 node-inspector
+npm i -g pnpm
+NODE_ENV=development pnpm install
+pnpm install -g rethink-migrate pm2 node-inspector
 ```
 
 ## Production
@@ -83,7 +82,7 @@ pm2 stop rrr
 
 Run the development toolset:
 ```
-yarn run dev
+pnpm run dev
 ```
 
 ### The services are running at these ports by default
@@ -101,23 +100,23 @@ Install [React Developer Tools](https://chrome.google.com/webstore/detail/react-
 
 ## Dependency checking
 To check your dependencies run
-`yarn run depcheck`
+`pnpm run depcheck`
 
 ## Testing
 
 ### Unit and integration testing
 This project uses mocha, chai, sinon, jsdom and enzyme for unit / integration testing.
 Single test run:
-`yarn run test:unit`
+`pnpm run test:unit`
 
 Watch mode:
-`yarn run test:unit:watch`
+`pnpm run test:unit:watch`
 
 ### Acceptance testing:
 For acceptance testing
 
 If you get a timeout while running acceptance tests, it might be an issue with electron.
-Try to run `DEBUG=nightmare yarn run test:acceptance` or `node_modules/electron/dist/electron` for further analysis.
+Try to run `DEBUG=nightmare pnpm run test:acceptance` or `node_modules/electron/dist/electron` for further analysis.
 
 #### Acceptance testing on CI server:
 To run electron on a headless CI server, Xvfb is required.
@@ -127,10 +126,10 @@ Make sure you export the `DISPLAY` to use.
 
 ## ESDoc
 To generate documentation run
-`yarn run esdoc`
+`pnpm run esdoc`
 
 ## i18n
 Configure your languages in `src/client/i18n`
-Extract messages from your react components: `yarn run translate`
+Extract messages from your react components: `pnpm run translate`
 This will generate JSON files in `src/translations` for each language.
 After translating all messages, don't forget to rebuild the bundle.

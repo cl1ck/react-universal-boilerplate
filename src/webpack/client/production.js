@@ -8,14 +8,16 @@ import devScss from 'webpack/rules/scss/client'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import favicon from 'webpack/plugins/favicon'
 import offline from 'webpack/plugins/offline'
+import features from 'config/features'
 import base from './base'
 
 const css = devCss.use.slice(1)
 const scss = devScss.use.slice(1)
+const cache = !(process.env.WATCH && process.env.WATCH === 'true')
 
 export default {
   ...base,
-  cache: false,
+  cache,
   output: {
     ...base.output,
     filename: '[name].[chunkhash].js'
@@ -31,7 +33,7 @@ export default {
     extractCSS,
     ...chunks,
     ...minimize,
-    offline
+    ...(features.offline ? [offline] : [])
   ],
   module: {
     rules: [

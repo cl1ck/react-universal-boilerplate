@@ -26,7 +26,8 @@
       "ignoreComments": true,
     }],
     "no-console": 0,
-    "no-debugger": 0
+    "no-debugger": 0,
+    "semi": [2, "never"]
   },
   "env": {
     "es6": true,
@@ -36,6 +37,7 @@
   "globals": {
     "__BROWSER__": true,
     "__DEV__": true,
-    "__TEST__": true
+    "__TEST__": true,
+    "Immutable": true
   }
 }

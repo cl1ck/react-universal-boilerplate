@@ -12,16 +12,14 @@ import { IntlProvider, addLocaleData } from 'react-intl'
 import App from './App'
 import { localeData, DEFAULT_LOCALE } from 'client/i18n'
 import translations from 'translations'
+import configureOfflinePlugin from 'client/offline/configureOfflinePlugin'
 
 let ActiveApp = App
 let activeTranslations = translations
 let language
 let messages
 
-if (!__DEV__) {
-  const OfflinePluginRuntime = require('offline-plugin/runtime')
-  OfflinePluginRuntime.install()
-}
+// load polyfills
 polyfill()
 
 let preloadedState
@@ -35,6 +33,9 @@ if (__BROWSER__ && window.__PRELOADED_STATE__) {
 
 const history = createBrowserHistory()
 const store = configureStore(preloadedState, history)
+
+// load offline plugin
+configureOfflinePlugin(store)
 
 function getMessages (language, translations) {
   const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0]

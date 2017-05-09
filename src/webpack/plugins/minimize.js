@@ -9,18 +9,18 @@ export default [
   }),
   new ParallelUglifyPlugin({
     cacheDir: paths.cache,
-    uglifyJS:{
+    uglifyJS: {
       output: {
-       comments: false
+        comments: false
       },
       compress: {
-       warnings: false,
-       screw_ie8: true
+        warnings: false,
+        screw_ie8: true
       },
       mangle: {
         screw_ie8: true,
         keep_fnames: true
-      },
+      }
     }
- })
+  })
 ]

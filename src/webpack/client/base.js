@@ -13,6 +13,8 @@ import webfonts from 'webpack/rules/webfonts'
 import postcss from 'webpack/plugins/postcss'
 import stylelint from 'webpack/plugins/stylelint'
 import indexHTML from 'webpack/plugins/indexHTML'
+import provide from 'webpack/plugins/provide'
+import serverConfig from 'config/server'
 
 process.traceDeprecation = true
 
@@ -30,6 +32,7 @@ export default {
     ]
   },
   output: {
+    publicPath: serverConfig.publicPath,
     chunkFilename: '[name].[chunkhash].js',
     path: path.join(paths.dist, 'static'),
     crossOriginLoading: 'anonymous'
@@ -42,7 +45,7 @@ export default {
     postcss,
     ...indexHTML,
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.ProvidePlugin({React: 'react'}),
+    provide,
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
       __BROWSER__: 'true',

@@ -14,6 +14,8 @@ import javascript from 'webpack/rules/javascript'
 import image from 'webpack/rules/image'
 import webfonts from 'webpack/rules/webfonts'
 import postcss from 'webpack/plugins/postcss'
+import provide from 'webpack/plugins/provide'
+import serverConfig from 'config/server'
 
 process.traceDeprecation = true
 
@@ -27,7 +29,7 @@ export default {
   entry: ['babel-regenerator-runtime'],
   output: {
     filename: 'server.js',
-    publicPath: '/',
+    publicPath: serverConfig.publicPath,
     libraryTarget: 'commonjs2'
   },
   module: {
@@ -41,7 +43,7 @@ export default {
     }),
     postcss,
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.ProvidePlugin({React: 'react'})
+    provide
   ],
   target: 'node',
   externals: [nodeExternals()]

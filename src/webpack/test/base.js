@@ -11,6 +11,8 @@ import postcss from 'webpack/plugins/postcss'
 import paths from 'config/paths'
 import path from 'path'
 import stats from 'webpack/misc/stats'
+import provide from 'webpack/plugins/provide'
+import serverConfig from 'config/server'
 
 export default {
   resolve,
@@ -19,7 +21,7 @@ export default {
     path.join(paths.src, 'test', 'setup.js'),
   ],
   output: {
-    publicPath: '/',
+    publicPath: serverConfig.publicPath,
     libraryTarget: 'commonjs2',
     path: paths.temp
   },
@@ -42,7 +44,7 @@ export default {
     }),
     postcss,
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.ProvidePlugin({React: 'react'})
+    provide
   ],
   stats,
   target: 'node',

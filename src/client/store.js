@@ -5,8 +5,10 @@ import {persistState} from 'redux-devtools'
 import {connectRouter, routerMiddleware} from 'connected-react-router/immutable'
 import DevTools from 'client/components/DevTools'
 import getSocketConnection from 'client/socket/getSocketConnection'
-import * as reducers from 'client/modules'
+import * as appReducers from 'client/modules'
 import socketMiddleware from 'common/redux/socket/middleware'
+import offlineReducer from 'client/offline/offline'
+import features from 'config/features'
 import {
   middleware as fxMiddleware,
   reducers as fxReducers
@@ -44,10 +46,14 @@ export default function configureStore (preloadedState, history) {
 
   // compose middleware
   const rootEnhancer = compose(applyMiddleware(...middlewares), ...enhancers)
-  let rootReducer = combineReducers({
-    ...reducers,
+  const reducers = {
+    ...appReducers,
     ...fxReducers
-  })
+  }
+  if (features.offline) {
+    reducers.offline = offlineReducer
+  }
+  let rootReducer = combineReducers(reducers)
   if (__BROWSER__) {
     rootReducer = connectRouter(history)(rootReducer)
   }
