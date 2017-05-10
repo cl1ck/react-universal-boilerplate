@@ -1,4 +1,4 @@
-import {Store} from 'koa-session2'
+import { Store } from 'koa-session2'
 
 export default class RedisStore extends Store {
   constructor (rethinkdb) {

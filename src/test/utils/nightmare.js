@@ -1,3 +1,3 @@
 import nightmare from 'nightmare'
 
-export default nightmare({ show: false})
+export default nightmare({ show: false })

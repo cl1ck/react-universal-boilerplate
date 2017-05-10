@@ -1,3 +1,3 @@
 import addTask from './addTask'
 
-export {addTask}
+export { addTask }

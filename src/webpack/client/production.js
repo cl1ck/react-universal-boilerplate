@@ -4,7 +4,7 @@ import extractCSS from 'webpack/plugins/extractCSS'
 import chunks from 'webpack/plugins/chunks'
 import minimize from 'webpack/plugins/minimize'
 import devCss from 'webpack/rules/css/client'
-import devScss from 'webpack/rules/scss/client'
+import devPostCss from 'webpack/rules/postcss/client'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import favicon from 'webpack/plugins/favicon'
 import offline from 'webpack/plugins/offline'
@@ -12,7 +12,7 @@ import features from 'config/features'
 import base from './base'
 
 const css = devCss.use.slice(1)
-const scss = devScss.use.slice(1)
+const postCss = devPostCss.use.slice(1)
 const cache = !(process.env.WATCH && process.env.WATCH === 'true')
 
 export default {
@@ -41,7 +41,7 @@ export default {
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          use: scss
+          use: postCss
         })
       },
       {

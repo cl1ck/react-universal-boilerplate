@@ -10,8 +10,6 @@ export default new OfflinePlugin({
     events: true,
     navigateFallbackURL: serverConfig.publicPath
   },
-  externals: [
-    serverConfig.publicPath
-  ],
+  externals: [serverConfig.publicPath],
   autoUpdate: 1000 * 60 * 60 * 24 // 24 hours
 })

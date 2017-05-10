@@ -1,9 +1,9 @@
 /* globals __DEV__ */
-import {compiler, initialBuildDone} from 'dev/compiler'
+import { compiler, initialBuildDone } from 'dev/compiler'
 import startApp from 'common/http/startApp'
 import attachHotServer from 'webpack-hot-socket-server'
 import devConfig from 'config/dev'
-import {dev as log} from 'common/log'
+import { dev as log } from 'common/log'
 import app from './app'
 
 let stopServer

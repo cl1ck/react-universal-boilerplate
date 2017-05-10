@@ -4,8 +4,8 @@ import WebpackShellPlugin from 'webpack-shell-plugin'
 import paths from 'config/paths'
 import path from 'path'
 
-const mocha = 'node_modules/mocha/bin/mocha ' +
-  path.join(paths.temp, 'coverage-test.js')
+const mocha =
+  'node_modules/mocha/bin/mocha ' + path.join(paths.temp, 'coverage-test.js')
 const NO_FAIL = process.env.NO_FAIL === 'true'
 
 export default {
@@ -17,13 +17,10 @@ export default {
   ],
   output: {
     ...base.output,
-    filename: 'coverage-test.js',
+    filename: 'coverage-test.js'
   },
   module: {
-    rules: [
-      istanbul,
-      ...base.module.rules
-    ]
+    rules: [istanbul, ...base.module.rules]
   },
   plugins: [
     ...base.plugins,

@@ -1,8 +1,8 @@
 /* globals __DEV__ */
-import {StaticRouter} from 'react-router'
-import {Provider} from 'react-redux'
-import {renderToString} from 'react-dom/server'
-import {reactServer as log} from 'common/log'
+import { StaticRouter } from 'react-router'
+import { Provider } from 'react-redux'
+import { renderToString } from 'react-dom/server'
+import { reactServer as log } from 'common/log'
 import cheerio from 'cheerio'
 import fs from 'mz/fs'
 import immutable from 'immutable'
@@ -21,7 +21,7 @@ let activeTranslations = translations
 async function getIndex (rootComponent, store) {
   const dir = __DEV__ ? paths.dist : __dirname
   const indexFilename = path.join(dir, 'static/index.html')
-  const indexHTML = await fs.readFile(indexFilename, {encoding: 'utf8'})
+  const indexHTML = await fs.readFile(indexFilename, { encoding: 'utf8' })
   const $ = cheerio.load(indexHTML)
   const injectState = `
 <script type='text/javascript' charset='utf-8'>

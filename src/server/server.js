@@ -1,5 +1,5 @@
 import serverConfig from 'config/server'
-import {server as log} from 'common/log'
+import { server as log } from 'common/log'
 import startApp from 'common/http/startApp'
 import prettyError from 'pretty-error'
 import connect from './connect'

@@ -1,4 +1,4 @@
-import {dev as log} from 'common/log'
+import { dev as log } from 'common/log'
 
 if (module.hot) {
   const checkForUpdate = async () => {

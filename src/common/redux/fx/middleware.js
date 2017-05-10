@@ -1,5 +1,5 @@
-import {compose} from 'redux'
-import {redux as log} from 'common/log'
+import { compose } from 'redux'
+import { redux as log } from 'common/log'
 
 class DispatchBlockedException extends Error {
   constructor (message) {
@@ -9,8 +9,8 @@ class DispatchBlockedException extends Error {
 }
 
 // rejects fx actions that are not currently defined by an active <FX />
-const throwableFxBlockingMiddleware = throwOnError => store => next =>
-action => {
+// eslint-disable-next-line max-len
+const throwableFxBlockingMiddleware = throwOnError => store => next => action => {
   if (
     action.meta &&
     action.meta.fx &&

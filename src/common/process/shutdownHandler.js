@@ -41,4 +41,4 @@ process
 
 export default addShutdownHandler
 
-export {addShutdownHandler, clearShutdownHandlers}
+export { addShutdownHandler, clearShutdownHandlers }

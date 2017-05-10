@@ -1,4 +1,6 @@
-export default aliases => (node) => {
+import paths from 'config/paths'
+
+export default aliases => node => {
   if (
     node.type === 'CallExpression' &&
     node.callee &&

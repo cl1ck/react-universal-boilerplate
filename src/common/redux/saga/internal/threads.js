@@ -1,6 +1,6 @@
 import 'zone.js'
 import 'zone.js/dist/long-stack-trace-zone'
-import {getUniqueId, asPromise} from './helpers'
+import { getUniqueId, asPromise } from './helpers'
 
 const TASK_CANCELLED = 'TaskCancelled'
 

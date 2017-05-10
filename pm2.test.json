@@ -1,0 +1,21 @@
+{
+  "name"             : "react-universal-boilerplate (testing)",
+  "cwd"              : "./",
+  "args"             : "",
+  "script"           : "./dist/server.js",
+  "node_args"        : ["--stack-size=102400000"],
+  "log_date_format"  : "YYYY-MM-DD HH:mm Z",
+  "error_file"       : "./logs/stderr.test.log",
+  "out_file"         : "./logs/stdout.test.log",
+  "pid_file"         : "/tmp/react-universal-boilerplate.test.id",
+  "min_uptime"       : "200s",
+  "watch"            : false,
+  "merge_logs"       : true,
+  "exec_interpreter" : "node",
+  "exec_mode"        : "fork",
+  "autorestart"      : false,
+  "vizion"           : false,
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

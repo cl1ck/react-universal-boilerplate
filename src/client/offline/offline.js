@@ -5,8 +5,15 @@ export const ONLINE = 'ONLINE'
 export const OFFLINE = 'OFFLINE'
 
 // Reducer
+let initialStatus
+if (__BROWSER__) {
+  initialStatus = navigator.onLine ? ONLINE : OFFLINE
+} else {
+  initialStatus = ONLINE
+}
+
 const initialState = Immutable.Map({
-  status: navigator.onLine ? ONLINE : OFFLINE,
+  status: initialStatus,
   offlineReady: false
 })
 

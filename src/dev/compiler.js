@@ -18,4 +18,4 @@ const validateBundle = () => {
   resolveInitialBuild()
 }
 
-export {compiler, validateBundle, initialBuildDone}
+export { compiler, validateBundle, initialBuildDone }

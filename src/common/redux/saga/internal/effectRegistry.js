@@ -1,4 +1,4 @@
-import {sync} from './threads'
+import { sync } from './threads'
 
 export const IO = Symbol('IO')
 

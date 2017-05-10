@@ -12,7 +12,7 @@ import serve from 'koa-static'
 import mount from 'koa-mount'
 import serverConfig from 'config/server'
 import logConfig from 'config/log'
-import {server as log} from 'common/log'
+import { server as log } from 'common/log'
 import rethinkdb from 'common/database/rethinkdb'
 import favicon from 'server/middleware/favicon'
 import logger from 'server/middleware/logger'
@@ -58,9 +58,7 @@ app.use(favicon)
 
 // Static
 if (!__DEV__) {
-  app.use(convert(
-    mount('/', serve(`${__dirname}/static`))
-  ))
+  app.use(convert(mount('/', serve(`${__dirname}/static`))))
 }
 
 // user defined middlewares

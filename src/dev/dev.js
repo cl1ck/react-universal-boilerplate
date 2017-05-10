@@ -1,6 +1,6 @@
 import 'webpack/hotreload/signal'
 import browserSyncConfig from 'config/browserSync'
-import {dev as log} from 'common/log'
+import { dev as log } from 'common/log'
 import startBrowserSync from 'dev/browsersync/startBrowserSync'
 import server from 'server/server'
 import dev from 'dev/server'

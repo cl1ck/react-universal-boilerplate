@@ -1,4 +1,4 @@
-import {Strategy as LocalStrategy} from 'passport-local'
+import { Strategy as LocalStrategy } from 'passport-local'
 
 export default class Auth {
   constructor (rethinkdb) {

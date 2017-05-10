@@ -1,5 +1,5 @@
 import React from 'react'
-import {Switch, Route, Redirect} from 'react-router'
+import { Switch, Route, Redirect } from 'react-router'
 import NotFound from 'client/components/NotFound'
 import Test from 'client/components/Test'
 import DevTools from 'client/components/DevTools'

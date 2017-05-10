@@ -1,5 +1,5 @@
-import {runEffect, isEffect} from './effectRegistry'
-import {emit} from './event'
+import { runEffect, isEffect } from './effectRegistry'
+import { emit } from './event'
 
 // the main middleware
 export default store => next => action => {

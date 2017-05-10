@@ -6,6 +6,7 @@ coverage/
 dist/
 temp/
 .tmp/
+logs/
 node_modules/
 apidoc/
 yarn-error.log

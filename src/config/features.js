@@ -1,3 +1,3 @@
 export default {
-  offline: true
+  offline: false
 }

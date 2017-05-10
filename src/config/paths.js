@@ -10,6 +10,7 @@ export default {
   cache: path.join(root, '.cache'),
   dist: path.join(root, 'dist'),
   temp: path.join(root, 'temp'),
+  logs: path.join(root, 'logs'),
   client: path.join(src, 'client'),
   server: path.join(src, 'server'),
   common: path.join(src, 'common'),

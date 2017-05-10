@@ -1,15 +1,15 @@
-import path from 'path';
+import path from 'path'
 
-const webpackConfigRegex = /webpack(\..+)?\.config\.(babel\.)?js/;
+const webpackConfigRegex = /webpack(\..+)?\.config\.(babel\.)?js/
 
 function sanitizeLoader (loader) {
-  const match = loader.match(/([^/\?]+).*/)
+  const match = loader.match(/([^/?]+).*/)
   return match[1]
 }
 
 function parseRules (rules) {
   const loaders = []
-  rules.forEach((rule) => {
+  rules.forEach(rule => {
     if (typeof rule === 'string') {
       loaders.push(sanitizeLoader(rule))
     } else if (rule.loader) {
@@ -26,7 +26,7 @@ function parseRules (rules) {
 function parseWebpackConfig (configOrArray) {
   if (Array.isArray(configOrArray)) {
     const dependencies = []
-    configOrArray.forEach((config) => {
+    configOrArray.forEach(config => {
       const loaders = parseWebpackConfig(config)
       dependencies.push(...loaders)
     })

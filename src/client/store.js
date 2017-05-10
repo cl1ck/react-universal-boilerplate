@@ -1,14 +1,16 @@
 /* global __BROWSER__, __DEV__ */
-import {createStore, applyMiddleware, compose} from 'redux'
-import {combineReducers} from 'redux-immutable'
-import {persistState} from 'redux-devtools'
-import {connectRouter, routerMiddleware} from 'connected-react-router/immutable'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { combineReducers } from 'redux-immutable'
+import { persistState } from 'redux-devtools'
+import {
+  connectRouter,
+  routerMiddleware
+} from 'connected-react-router/immutable'
 import DevTools from 'client/components/DevTools'
 import getSocketConnection from 'client/socket/getSocketConnection'
 import * as appReducers from 'client/modules'
 import socketMiddleware from 'common/redux/socket/middleware'
 import offlineReducer from 'client/offline/offline'
-import features from 'config/features'
 import {
   middleware as fxMiddleware,
   reducers as fxReducers
@@ -48,10 +50,8 @@ export default function configureStore (preloadedState, history) {
   const rootEnhancer = compose(applyMiddleware(...middlewares), ...enhancers)
   const reducers = {
     ...appReducers,
-    ...fxReducers
-  }
-  if (features.offline) {
-    reducers.offline = offlineReducer
+    ...fxReducers,
+    offline: offlineReducer
   }
   let rootReducer = combineReducers(reducers)
   if (__BROWSER__) {
@@ -62,7 +62,7 @@ export default function configureStore (preloadedState, history) {
   // hot reload reducers
   if (module.hot) {
     module.hot.accept('./modules', () => {
-      const {reducers: nextReducers} = require('./modules') // eslint-disable-line
+      const { reducers: nextReducers } = require('./modules') // eslint-disable-line
       const nextCombinedReducer = combineReducers({
         ...nextReducers
       })

@@ -3,7 +3,7 @@ import nodeExternals from 'webpack-node-externals'
 import resolve from 'webpack/misc/resolve'
 import ejs from 'webpack/rules/ejs'
 import css from 'webpack/rules/css/server'
-import scss from 'webpack/rules/scss/server'
+import postcss from 'webpack/rules/postcss/server'
 import sourceMapBanner from 'webpack/plugins/sourceMapBanner'
 import paths from 'config/paths'
 import stats from 'webpack/misc/stats'
@@ -13,7 +13,6 @@ import eslint from 'webpack/rules/eslint'
 import javascript from 'webpack/rules/javascript'
 import image from 'webpack/rules/image'
 import webfonts from 'webpack/rules/webfonts'
-import postcss from 'webpack/plugins/postcss'
 import provide from 'webpack/plugins/provide'
 import serverConfig from 'config/server'
 
@@ -33,7 +32,7 @@ export default {
     libraryTarget: 'commonjs2'
   },
   module: {
-    rules: [eslint, javascript, image, ejs, css, scss, ...webfonts]
+    rules: [eslint, javascript, image, ejs, css, postcss, ...webfonts]
   },
   plugins: [
     sourceMapBanner,
@@ -41,7 +40,6 @@ export default {
       __BROWSER__: 'false',
       __TEST__: 'false'
     }),
-    postcss,
     new webpack.NoEmitOnErrorsPlugin(),
     provide
   ],

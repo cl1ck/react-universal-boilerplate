@@ -1,6 +1,6 @@
 import MockStore from './MockStore'
-import {createTask, spawn} from './threads'
-import {getUniqueId, isFunction, isAsyncFunction} from './helpers'
+import { createTask, spawn } from './threads'
+import { getUniqueId, isFunction, isAsyncFunction } from './helpers'
 
 export const runSaga = async (store, name, saga) => {
   if (!(store && store.dispatch)) {

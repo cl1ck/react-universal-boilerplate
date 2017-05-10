@@ -1,8 +1,9 @@
 import * as OfflinePlugin from 'offline-plugin/runtime'
 import { goOnline, goOffline, offlineReady } from 'client/offline/offline'
+import features from 'config/features'
 
-export default (store) => {
-  if (__DEV__) {
+export default store => {
+  if (__DEV__ || !features.offline) {
     return
   }
 

@@ -1,12 +1,11 @@
-import {registerEffect} from './effectRegistry'
+import { registerEffect } from './effectRegistry'
 import {
   fork as forkThread,
   call as callThread,
   cancel as cancelThread,
   hasThread
 } from './threads'
-import {callbackToPromise} from './helpers'
-import {subscribe} from './event'
+import { subscribe } from './event'
 
 const asyncSaga = 'AsyncSaga'
 

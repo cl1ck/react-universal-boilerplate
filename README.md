@@ -124,6 +124,9 @@ e.g. for [https://wiki.jenkins-ci.org/display/JENKINS/Xvfb+Plugin](Jenkins)
 
 Make sure you export the `DISPLAY` to use.
 
+## Linting
+`npm run lint` will run prettier-eslint and then check the output with eslint
+
 ## ESDoc
 To generate documentation run
 `pnpm run esdoc`

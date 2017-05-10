@@ -1,10 +1,10 @@
-import {Link} from 'react-router-dom'
-import {FormattedMessage} from 'react-intl'
+import { Link } from 'react-router-dom'
+import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { ONLINE, OFFLINE, offlineSelector } from 'client/offline/offline'
 import styles from './Test.scss'
 
-export const Test = ({status}) => {
+export const Test = ({ status }) => {
   let message
   if (status === ONLINE) {
     message = <FormattedMessage id={'Online'} defaultMessage={'Online'} />

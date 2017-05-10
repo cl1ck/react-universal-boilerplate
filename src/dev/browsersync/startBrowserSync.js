@@ -1,5 +1,5 @@
 import browserSync from 'browser-sync'
-import {browsersync as log} from 'common/log'
+import { browsersync as log } from 'common/log'
 import browsersyncConfig from 'config/browserSync'
 
 function initBrowserSync () {

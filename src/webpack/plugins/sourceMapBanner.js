@@ -1,4 +1,4 @@
-import {BannerPlugin} from 'webpack'
+import { BannerPlugin } from 'webpack'
 
 export default new BannerPlugin({
   banner: "require('source-map-support').install()\n",

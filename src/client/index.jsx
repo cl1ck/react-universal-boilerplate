@@ -1,11 +1,11 @@
 import 'client/vendor.css'
 import React from 'react'
-import {render} from 'react-dom'
-import {Provider} from 'react-redux'
-import {createBrowserHistory} from 'history'
-import {AppContainer} from 'react-hot-loader'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createBrowserHistory } from 'history'
+import { AppContainer } from 'react-hot-loader'
 import configureStore from 'client/store'
-import {ConnectedRouter} from 'connected-react-router/immutable'
+import { ConnectedRouter } from 'connected-react-router/immutable'
 import transit from 'transit-immutable-js'
 import polyfill from 'client/polyfills'
 import { IntlProvider, addLocaleData } from 'react-intl'
@@ -39,14 +39,17 @@ configureOfflinePlugin(store)
 
 function getMessages (language, translations) {
   const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0]
-  return translations[languageWithoutRegionCode] ||
+  return (
+    translations[languageWithoutRegionCode] ||
     translations[language] ||
     translations[DEFAULT_LOCALE]
+  )
 }
 
 // i18n
 addLocaleData(localeData)
-language = (navigator.languages && navigator.languages[0]) ||
+language =
+  (navigator.languages && navigator.languages[0]) ||
   navigator.language ||
   navigator.userLanguage
 messages = getMessages(language, activeTranslations)

@@ -1,7 +1,7 @@
-import {Component} from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {addAdapter, removeAdapter} from 'common/redux/fx/modules/adapters'
+import { connect } from 'react-redux'
+import { addAdapter, removeAdapter } from 'common/redux/fx/modules/adapters'
 
 class FXAdapter extends Component {
   static propTypes = {

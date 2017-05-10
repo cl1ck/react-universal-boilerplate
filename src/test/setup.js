@@ -11,7 +11,8 @@ import chaiJestSnapshot from 'chai-jest-snapshot'
 sourcemap.install()
 
 // jsdom
-const dom = new JSDOM(`
+const dom = new JSDOM(
+  `
 <!DOCTYPE html>
 <html>
   <head>
@@ -32,7 +33,6 @@ global.navigator = {
 // chai
 global.assert = chai.assert
 global.expect = chai.expect
-chai.use(chaiJestSnapshot)
 
 // enzyme
 global.mount = mount
@@ -46,6 +46,8 @@ global.sinon = sinon
 global.nightmare = nightmare
 global.visit = visit
 
-beforeEach(function() {
-  chaiJestSnapshot.configureUsingMochaContext(this);
+// snapshot testing
+chai.use(chaiJestSnapshot)
+beforeEach(function () {
+  chaiJestSnapshot.configureUsingMochaContext(this)
 })

@@ -10,7 +10,6 @@ import eslint from 'webpack/rules/eslint'
 import javascript from 'webpack/rules/javascript'
 import image from 'webpack/rules/image'
 import webfonts from 'webpack/rules/webfonts'
-import postcss from 'webpack/plugins/postcss'
 import stylelint from 'webpack/plugins/stylelint'
 import indexHTML from 'webpack/plugins/indexHTML'
 import provide from 'webpack/plugins/provide'
@@ -26,10 +25,7 @@ export default {
   stats,
   performance,
   entry: {
-    app: [
-      'babel-regenerator-runtime',
-      path.join(paths.src, 'client/index.jsx')
-    ]
+    app: ['babel-regenerator-runtime', path.join(paths.src, 'client/index.jsx')]
   },
   output: {
     publicPath: serverConfig.publicPath,
@@ -42,7 +38,6 @@ export default {
   },
   plugins: [
     stylelint,
-    postcss,
     ...indexHTML,
     new webpack.NoEmitOnErrorsPlugin(),
     provide,

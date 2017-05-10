@@ -1,5 +1,5 @@
 import webpack from 'webpack'
-import {fork} from 'child_process'
+import { fork } from 'child_process'
 import statsOptions from 'webpack/misc/stats'
 import {
   addShutdownHandler,
@@ -114,22 +114,18 @@ export default async (name, config, debugPort, log, onSuccess) =>
     log.info(`Building bundle ${name}...`)
     compiler.watch(compilerOptions, async (err, stats) => {
       if (err) {
-        log.error(
-          `Error in bundle ${name}:\n${err}`
-        )
+        log.error(`Error in bundle ${name}:\n${err}`)
         return
       }
       if (stats.hasErrors()) {
         log.error(
-          `Error in bundle ${name}: \n` +
-          `${stats.toString(statsOptions)}`
+          `Error in bundle ${name}: \n` + `${stats.toString(statsOptions)}`
         )
         return
       }
       if (stats.hasWarnings()) {
         log.warn(
-          `Warnings in bundle ${name}: \n` +
-          `${stats.toString(statsOptions)}`
+          `Warnings in bundle ${name}: \n` + `${stats.toString(statsOptions)}`
         )
         return
       }

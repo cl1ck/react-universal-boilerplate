@@ -1,6 +1,6 @@
-import {isEffect} from './effectRegistry'
-import {spawn, createTask} from './threads'
-import {getUniqueId} from './helpers'
+import { isEffect } from './effectRegistry'
+import { spawn, createTask } from './threads'
+import { getUniqueId } from './helpers'
 
 class PromiseChain {
   chain = []

@@ -1,2 +1,2 @@
 require('../../common/babel/runtime')
-require('./extractIntl.babel.js')
+require('./waitOnServer.babel.js')

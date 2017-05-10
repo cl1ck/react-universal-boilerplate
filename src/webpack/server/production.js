@@ -3,9 +3,11 @@ import paths from 'config/paths'
 import webpack from 'webpack'
 import base from './base'
 
+const cache = !(process.env.WATCH && process.env.WATCH === 'true')
+
 export default {
   ...base,
-  cache: false,
+  cache,
   entry: [...base.entry, path.join(paths.src, 'server/server.js')],
   output: {
     ...base.output,

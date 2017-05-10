@@ -1,7 +1,7 @@
 import webpack from 'webpack'
 import dev from 'config/dev'
 import css from 'webpack/rules/css/client'
-import scss from 'webpack/rules/scss/client'
+import postcss from 'webpack/rules/postcss/client'
 import base from './base'
 
 export default {
@@ -31,6 +31,6 @@ export default {
     new webpack.NamedModulesPlugin()
   ],
   module: {
-    rules: [css, scss, ...base.module.rules]
+    rules: [css, postcss, ...base.module.rules]
   }
 }

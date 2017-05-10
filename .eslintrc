@@ -32,12 +32,22 @@
   "env": {
     "es6": true,
     "browser": true,
-    "node": true
+    "node": true,
+    "mocha": true
   },
   "globals": {
     "__BROWSER__": true,
     "__DEV__": true,
     "__TEST__": true,
-    "Immutable": true
+    "Immutable": true,
+    "Zone": true,
+    "assert": true,
+    "expect": true,
+    "mount": true,
+    "shallow": true,
+    "render": true,
+    "sinon": true,
+    "nightmare": true,
+    "visit": true
   }
 }

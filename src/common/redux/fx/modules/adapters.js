@@ -8,11 +8,11 @@ const initialState = immutable.Map()
 export default function reducer (state = initialState, action = {}) {
   switch (action.type) {
     case ADD_ADAPTER: {
-      const {from, to} = action.payload
+      const { from, to } = action.payload
       return state.updateIn([from, to], (x = 0) => x + 1)
     }
     case REMOVE_ADAPTER: {
-      const {from, to} = action.payload
+      const { from, to } = action.payload
       return state
         .updateIn([from, to], count => count - 1)
         .update(from, targets => targets.filter(count => count > 0))
@@ -25,10 +25,10 @@ export default function reducer (state = initialState, action = {}) {
 
 export const addAdapter = (from, to) => ({
   type: ADD_ADAPTER,
-  payload: {from, to}
+  payload: { from, to }
 })
 
 export const removeAdapter = (from, to) => ({
   type: REMOVE_ADAPTER,
-  payload: {from, to}
+  payload: { from, to }
 })

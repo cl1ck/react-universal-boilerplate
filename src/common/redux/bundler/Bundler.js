@@ -1,4 +1,4 @@
-import {autobind} from 'core-decorators'
+import { autobind } from 'core-decorators'
 import Bundle from './Bundle'
 
 @autobind
@@ -22,17 +22,14 @@ export default class Bundler {
   }
 
   add (...bundles) {
-    bundles.forEach((bundle) => {
+    bundles.forEach(bundle => {
       this.addBundle(bundle)
     })
   }
 
   getBundledReducers () {
     const reducers = this.bundles.reduce(
-      (
-        bundledReducers,
-        bundle
-      ) => {
+      (bundledReducers, bundle) => {
         bundledReducers[bundle.getName()] = bundle.callReducer
         return bundledReducers
       },
@@ -44,15 +41,9 @@ export default class Bundler {
   }
 
   getBundledComponents () {
-    return this.bundles.reduce(
-      (
-        bundledComponents,
-        bundle
-      ) => {
-        bundledComponents[bundle.getName()] = bundle.getComponents()
-        return bundledComponents
-      },
-      {}
-    )
+    return this.bundles.reduce((bundledComponents, bundle) => {
+      bundledComponents[bundle.getName()] = bundle.getComponents()
+      return bundledComponents
+    }, {})
   }
 }

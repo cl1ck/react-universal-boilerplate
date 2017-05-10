@@ -1,6 +1,5 @@
-import {autobind} from 'core-decorators'
-import {connect} from 'react-redux'
-import {Action} from 'redux'
+import { autobind } from 'core-decorators'
+import { connect } from 'react-redux'
 import snake from 'to-snake-case'
 
 @autobind
@@ -24,7 +23,7 @@ export default class Bundle {
   }
 
   mapStateToProps (Container, requestedProps) {
-    return (state) => {
+    return state => {
       const props = {}
       if (!state.has(this.name)) {
         throw new Error(
@@ -44,7 +43,7 @@ export default class Bundle {
   }
 
   mapDispatchToProps (Container, requestedProps) {
-    return (dispatch) => () => {
+    return dispatch => () => {
       const props = {}
       requestedProps.forEach(prop => {
         if (prop in this.actionCreators) {
@@ -64,11 +63,7 @@ export default class Bundle {
     )(Container)
   }
 
-  addContainer (
-    name,
-    container,
-    requestedProps
-  ) {
+  addContainer (name, container, requestedProps) {
     if (name in this.components) {
       throw new Error(`Duplicate component ${name}`)
     }
@@ -96,17 +91,13 @@ export default class Bundle {
     this.reducers[this.getNamespacedActionType(actionType)] = bundleReducer
   }
 
-  addAction (
-    actionType,
-    actionCreator,
-    meta
-  ) {
+  addAction (actionType, actionCreator, meta) {
     if (actionType in this.actionCreators) {
       throw new Error(`Duplicate action ${actionType}`)
     }
 
     this.actionCreators[actionType] = (...params) => {
-      const action: FSA = {
+      const action = {
         type: this.getNamespacedActionType(actionType),
         payload: actionCreator(...params)
       }
@@ -117,21 +108,12 @@ export default class Bundle {
     }
   }
 
-  add (
-    actionType,
-    reducer,
-    actionCreator,
-    meta
-  ) {
+  add (actionType, reducer, actionCreator, meta) {
     this.addAction(actionType, actionCreator, meta)
     this.addReducer(actionType, reducer)
   }
 
-  callReducer (
-    state,
-    action,
-    ...additionalParameters
-  ) {
+  callReducer (state, action, ...additionalParameters) {
     let currentState = state
 
     if (state === undefined) {
